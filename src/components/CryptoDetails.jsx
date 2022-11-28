@@ -20,6 +20,7 @@ import {
   useGetCryptoHistoryQuery,
 } from "../services/cryptoApi";
 import LineChart from "./LineChart";
+import Loader from "./Loader";
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -34,7 +35,7 @@ const CryptoDetails = () => {
   });
   const cryptoDetails = data?.data?.coin;
 
-  if (isFetching) return <strong>Loading...</strong>;
+  if (isFetching) return <Loader />;
 
   //console.log(coinHistory);
 
@@ -104,7 +105,7 @@ const CryptoDetails = () => {
     <Col className="coin-detail-container">
       <Col className="coin-heading-container">
         <Title level={2} className="coin-name">
-          {cryptoDetails?.name} ({cryptoDetails?.slug}) Price
+          {cryptoDetails?.name} ({cryptoDetails?.symbol}) Price
         </Title>
         <p>
           {cryptoDetails?.name} live price in US dollars. View value statistics,
@@ -174,7 +175,9 @@ const CryptoDetails = () => {
       <Col className="coin-desc-link">
         <Row className="coin-desc">
           <Title level={3} className="coin-details-heading">
-            What is {cryptoDetails?.name}? <br />
+            What is {cryptoDetails?.name}?
+            <br />
+            <br />
             {HTMLReactParser(cryptoDetails?.description)}
           </Title>
         </Row>
