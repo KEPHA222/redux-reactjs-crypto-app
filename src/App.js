@@ -41,7 +41,7 @@ const App = () => {
             style={{ color: "white", textAlign: "center" }}
           >
             Cryptoverse <br />
-            Copyright © 2022. All rights reserved.
+            Copyright © 2024. All rights reserved.
           </Typography.Title>
           <Space>
             <Link to="/">Home</Link>
